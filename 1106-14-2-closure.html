@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const f2 = function (a) {
+        n--;
+        if (n >= 0) return a * a;
+        return null;
+      };
+
+      const f = (function () {
+        let n = 3;
+
+        return f2;
+      })();
+
+      console.log(f(7));
+      console.log(f(7));
+      console.log(f(7));
+      console.log(f(7));
+
+      //第一次呼叫就會出錯
+      //這邊的結構變成f2跟f都在A區塊裡面
+      //而n=3在B區塊裡面
+      //當呼叫Ａ區塊裡面找不到n  會往外找而不會去B區塊
+      //簡單來說  n包在A區塊並沒有包在Ｂ區塊裡面 兩個區塊沒有重疊 
+    </script>
+  </body>
+</html>

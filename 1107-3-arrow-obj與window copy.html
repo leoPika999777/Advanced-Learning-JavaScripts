@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const obj ={
+        name: 'obj',
+        myThis: this , //註解a- 這邊的this 是window
+        f1: function(){
+          return this;
+        },
+        f2(){
+          return this;
+        },
+        f3: ()=>{
+          return this; //因為用了箭頭  指向到註解a
+        },
+        f3a: () => this, //換寫法
+        f4() {
+          return () => this;
+        },
+      }
+
+      console.log(obj.myThis);//拿到window
+      console.log(obj.f1()); //拿到obj
+      console.log(obj.f2()); //拿到obj
+      console.log(obj.f3()); //拿到window
+      console.log(obj.f3a()); //拿到window
+      console.log(obj.f4()()); //在呼叫第一層的時候裡面的this呼叫到obj 綁定到obj  所以後面還是只會呼叫到obj
+    </script>
+  </body>
+</html>

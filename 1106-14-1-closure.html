@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const f = (function () {
+        let n = 3;
+
+        return function (a) {
+          n--;
+          // 跑到第四次就是null
+          if (n >= 0) return a * a;
+          return null;
+        };
+      })();
+      console.log(f(7));
+      console.log(f(7));
+      console.log(f(7));
+      console.log(f(7));
+    </script>
+  </body>
+</html>

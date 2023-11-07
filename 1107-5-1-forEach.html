@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>書名</td>
+          <td>編號</td>
+          <td>價格</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="./data/products.js"></script>
+    <script>
+      const tbody = document.querySelector("tbody");
+
+      let str = "";
+      products.forEach((el, i) => {
+        str += `
+        <tr>
+          <td>${el.bookname}</td>
+          <td>${el.book_id}</td>
+          <td>${el.price}</td>
+        </tr>
+        `;
+      });
+
+      tbody.innerHTML = str;
+    </script>
+  </body>
+</html>

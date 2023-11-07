@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .rect {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        background-color: #e7f5f7;
+        border: 1px solid #cccccc;
+      }
+
+      .ball {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: rgb(224, 210, 140);
+        border: 1px solid black;
+        left: 200px;
+        top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rect">
+      <div class="ball"></div>
+    </div>
+
+    <script>
+      const rect = document.querySelector(".rect");
+      const ball = document.querySelector(".ball");
+
+      rect.addEventListener("click", (e) => {
+        console.log("e.target:", e.target); // 事件發生的最底層的 element   target 是圓形
+        console.log("e.currentTarget:", e.currentTarget); //當前標的物  就是指addEventListener這個function
+        console.log("--------------------------");
+
+        //PointerEvent
+        //eventphase 事件的狀態
+        //事件會經過不同的區域 會知道是不同的狀態
+      });
+      rect.addEventListener("click", (e) => {
+        console.log("rect:", e.eventPhase); //eventphase 事件的狀態   //事件會經過不同的區域 會知道是不同的狀態
+      });
+      //2:target 事件發生的對象  這邊指圓形
+      //3:點在子元素身上
+      window.addEventListener("click", (e) => {
+        console.log("window:", e.eventPhase);
+      });
+      ball.addEventListener("click", (e) => {
+        console.log("ball:", e.eventPhase);
+      });
+    </script>
+  </body>
+</html>

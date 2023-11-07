@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function f1(x, y) {
+        console.log("f1:", this);
+        console.log({ x, y });
+      }
+      // 箭頭函式在定義時, 就會綁定 this (context)
+      const f3 = (x, y) => {
+        console.log("f3:", this); //箭頭函示 去window了
+        console.log({ x, y });
+      };
+
+      const objA = {
+        name: "objA",
+      };
+
+      // 第一個參數表示, 裡面的 this 要綁定誰
+      f1.call(objA, 1, 2);
+      f3.call(objA, 3, 4); // 箭頭函式使用 call() 是沒有作用的
+
+      f1.apply(objA, [1, 2]);
+      f3.apply(objA, [3, 4]);
+
+      const f1_bound = f1.bind(objA); // 綁定後取得新的函式
+      f1_bound(10, 20);
+      const objB = {
+        name: "objB",
+        f1_bound,
+      };
+      objB.f1_bound(10, 20);
+      //bind後怎麼呼叫  都會是被綁的
+      //綁定objA後  opjB.fiBindobjA  出來的還是objA
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+ 
+    <script>
+         // reduce() 方法将数组中的元素缩减为一个值，返回的这个值可以是任何类型。
+         // reduce() 可以将输入数组转换为所需的任何输出，同时保留原始数组。
+         
+      const ar1=[2,3,4,5,6,7,8,9];
+      //索引值是el的
+      
+      const t= ar1.reduce((prev, el, i)=>{
+        console.log({prev, el, i})
+        return prev+el;
+      },0)
+
+      console.log({t}); //總計
+    </script>
+  </body>
+</html>

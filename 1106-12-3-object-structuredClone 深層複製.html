@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const p1 = { name: "John" };
+      const p2 = { name: "Alex" };
+      const p3 = { name: "David" };
+
+      p1.next = p2;
+      p2.next = p3;
+      p3.next = p1;
+
+      try {
+         // 需要測試的語句 欲執行的程式碼
+        const str = JSON.stringify(p1);
+      } catch (ex) {
+        console.log(ex);   // 當錯誤發生時，欲執行的程式碼
+      }
+
+      const q1 = structuredClone(p1);
+      p1.name = "Flora";
+      console.log(q1);
+
+
+      //try...catch 語法由 try 區塊所組成，其中內含一個以上的語句，和零個以上的 catch 區塊，
+      //其中內含語句用來指明當例外在 try 區塊裡拋出時要做些什麼。
+      //也就是當你希望 try 區塊成功，但如果他不成功時，你會想要把控制權移交給 catch 區塊。
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const s1 = Symbol("abc");
+      const obj1 = { name: "bill", age: 23 };
+      const ar1 = [2, 3, 4];
+      const str1 = 'hello';
+
+      obj1[s1] = 345; // Symbol 可以當做 key, 相當於隱藏的屬性
+      console.log(obj1);
+      console.log(JSON.stringify(obj1));
+
+      for (let k in obj1) {
+        console.log(k, obj1[k]);
+      }
+      console.log(obj1[Symbol.iterator]);
+      console.log(ar1[Symbol.iterator]);
+      console.log(str1[Symbol.iterator]);
+      // Object.getOwnPropertySymbols(obj1) // 查看物件裡有哪些 symbol 的屬性
+    </script>
+  </body>
+</html>

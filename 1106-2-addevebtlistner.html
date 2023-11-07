@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .rect {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        background-color: #e7f5f7;
+        border: 1px solid #cccccc;
+      }
+
+      .ball {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: rgb(224, 210, 140);
+        border: 1px solid black;
+        left: 200px;
+        top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rect">
+      <div class="ball"></div>
+    </div>
+
+    <script>
+      const rect = document.querySelector(".rect");
+      const ball = document.querySelector(".ball");
+
+      const handler = (e) => {
+        const t = e.currentTarget;
+        console.log(t.constructor.name, t.className);
+        console.log("e.eventPhase:", e.eventPhase);
+        console.log("------------------------");
+      };
+
+      // 偵聽 at_target 和 bubbling 時期
+      rect.addEventListener("click", handler);
+      window.addEventListener("click", handler);
+      document.addEventListener("click", handleＦr);
+      ball.addEventListener("click", handler);
+      //上面聽到2跟3
+
+      //順序 從圓形 到矩形  到document(window的子物件)  到window
+      // addEventListener(type 需要小寫 ,function ,useCapture)
+      //useCapture預設是false
+
+      //當useCapture為true時
+      //下面聽到1跟2
+      // 偵聽 at_target 和 capturing 時期
+      rect.addEventListener("click", handler, true);
+      window.addEventListener("click", handler, true);
+      document.addEventListener("click", handler, true);
+      ball.addEventListener("click", handler, true);
+    </script>
+  </body>
+</html>

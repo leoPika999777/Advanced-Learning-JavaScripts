@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const ar1 = [..."依商業登記資料當初設立以及第二年加入兩支新球隊"];
+      const ar2 = [12, 3, 67, 23, 9, 35];
+
+      ar1.sort();
+      // ar2.sort(); // 預設看成字串排序
+
+      console.log(ar1);
+      console.log(ar2);
+
+      ar2.sort((a, b) => {
+        console.log({ a, b });
+        return a - b; // 排序規則, 負值才對調 (** 不要用布林值)
+      });
+      console.log(ar2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>2</div>
+    <div>3</div>
+    <div>5</div>
+    <div>7</div>
+    <div>9</div>
+
+
+    <script>
+        const divs= document.querySelectorAll('div');
+        console.log(divs);
+        const  [div1,div2]=divs;
+        console.log([divs]); //length(0)
+//可迭代的類型
+        
+        console.log([...divs]); //length(5)
+        console.log(div1,div2);
+
+        for (let el of divs) {
+            el.innerText = el.innerText * el.innerText;
+        }
+        
+        //迭代：使用迴圈實作
+        //迭代:是把已求得的數值，不斷重覆代入，再求得新數值的方法
+    </script>
+</body>
+</html>

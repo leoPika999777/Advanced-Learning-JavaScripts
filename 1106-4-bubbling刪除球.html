@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .rect {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        background-color: #e7f5f7;
+        border: 1px solid #cccccc;
+      }
+
+      .ball {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: red;
+        border: 1px solid black;
+        color: white;
+        font-weight: 800;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rect"></div>
+
+    <script>
+      const rect = document.querySelector(".rect");
+      let str = "";
+      for (let i = 0; i < 10; i++) {
+        str += `<div class="ball abc" style="left: ${i * 50}px; top: 50px">${
+          i + 1
+        }</div>`;
+      }
+      rect.innerHTML = str;
+
+      rect.addEventListener("click", (e) => {
+        const t = e.target;
+        // if (t.className === "ball") t.remove();
+        if (t.classList.contains("ball")) t.remove();
+      });
+    </script>
+  </body>
+</html>

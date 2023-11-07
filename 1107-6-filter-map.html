@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const ar1 = [2, 3, 4, 5, 6, 7, 8, 9];
+      
+      // filter 篩選
+      const ar2 = ar1.filter((el, i) => {
+        // true 你要的項目
+        return el % 2;
+      });
+      console.log({ ar1, ar2 });
+
+      // 以對應的格式輸出
+      const ar3 = ar1.map((el, i) => {
+        return el * el;
+      });
+
+      console.log({ ar1, ar3 });
+
+      // 以對應的格式輸出
+      const ar4 = ar1.map((el, i) => {
+        return `<b>${el}</b>`;
+      });
+      console.log({ ar1, ar4 });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+        //這邊的f1到f3都是呈現window
+      function f1() {
+        console.log("f1:", this);
+      }
+      const f2 = function () {
+        console.log("f2:", this);
+      };
+      // 這邊多了箭頭 箭頭函式在定義時, 就會綁定 this (context)
+      // f3如何定義都會是window
+      const f3 = () => {
+        console.log("f3:", this);
+      };
+
+      
+      const objA = {
+        name: "objA",
+        f1,
+        f2,
+        f3,
+      };
+      const objB = {
+        name: "objB",
+        f1,
+        f2,
+        f3,
+      };
+      f1();
+      f2();
+      f3();
+
+      objA.f1();
+      objA.f2();
+      objA.f3();
+      objB.f1();
+      objB.f2();
+      objB.f3();
+    </script>
+  </body>
+</html>
