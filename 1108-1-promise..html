@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // resolve("aaaa");
+          reject("errorrrrrrrr-");
+        }, 1000);
+      });
+//是一個表示非同步運算的最終完成或失敗的物件。由於多數人使用預建立的 Promise，這個導覽會先講解回傳 Promise 的使用方式，之後再介紹如何建立。
+      p.then((result) => {
+        console.log({ result });
+      }).catch((ex) => console.log(ex));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+//匯入改名字用as 
+    import fun01, { f2 as othername, Person, n, m } from "./modules/func03.js";
+    console.log(fun01(m));
+      const p1 = new Person("Alex", 27);
+      console.log(p1.toString());
+      
+      //如果現在有另一個物件呢？
+      const obj ={
+        myName : "LEO",
+        myAge :30,
+      }
+      //const {屬性 ：變數}
+      // 一般物件展開用：
+      const { myName: myNewName } = obj;
+      console.log({myNewName});
+
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function myPromise(a = 0) {
+        return new Promise((resolve, reject) => {
+          const ms = 500 + Math.floor(Math.random() * 1000);
+          setTimeout(() => {
+            resolve({ a, ms });
+          }, ms);
+        });
+      }
+
+      const promises = [];
+
+      for (i = 0; i < 10; i++) {
+        promises.push(myPromise(i + 1));
+        // promises.push(myPromise(i + 1).then((r) => console.log(r)));
+        /*
+        promises.push(myPromise(i + 1).then((r) =>{
+          console.log(r);
+          return r.a;
+        }));
+        */
+      }
+
+      Promise.all(promises).then((result) => {
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>

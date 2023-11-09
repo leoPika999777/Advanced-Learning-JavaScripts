@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      //加上type="module會形成ESM的模組
+      // let n = 100;
+      // 這邊要引用檔案 用import 而檔案那邊要加上export做匯出
+      //並不是匯出的我都要接受 可以挑我要的
+      import {f1, n} from "./modules/func01.js";
+      console.log(f1(n));
+    </script>
+    <!-- 上面與下面會是不同的模組 -->
+    <!-- <script type="module">
+      console.log(n);
+    </script> -->
+  </body>
+</html>

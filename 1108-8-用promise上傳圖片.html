@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="return false">
+      <input type="file" onchange="inputChange()" id="inp" />
+    </form>
+    <img src="" alt="" id="myimg" />
+
+    <script src="data/utils.js"></script>
+
+    <script>
+      const inp = document.querySelector("#inp");
+      const myimg = document.querySelector("#myimg");
+      async function inputChange() {
+        const f = inp.files[0];
+        //呼叫js的file
+        //等下面的做完 拿到的是base的結果
+        myimg.src = await getBase64Img(f);
+      }
+    </script>
+  </body>
+</html>

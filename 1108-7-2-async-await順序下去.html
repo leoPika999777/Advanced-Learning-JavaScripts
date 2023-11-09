@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function myPromise(a = 0) {
+        return new Promise((resolve, reject) => {
+          const ms = 500 + Math.floor(Math.random() * 1000);
+          setTimeout(() => {
+            resolve({ a, ms });
+          }, ms);
+        });
+      }
+//async function（非同步函式）
+//async function 可以用來定義一個非同步函式，
+//讓這個函式本體是屬於非同步，但其內部以“同步的方式運行非同步”程式碼。
+//讓這個函式本體是屬於非同步，但其內部以“同步的方式運行非同步”程式碼。
+      (async () => {
+        for (let i = 0; i <= 10; i++) {
+          const r1 = await myPromise("x" + i);
+          console.log(r1);
+        }
+        (async () => {
+        for (let i = 0; i <= 10; i++) {
+          const r1 = await myPromise("y" + i);
+          console.log(r1);
+        }
+      })();
+      })();
+      
+
+   
+    </script>
+  </body>
+</html>

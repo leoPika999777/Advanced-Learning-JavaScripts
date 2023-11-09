@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+      position: relative;
+      width: 200px;
+      height: 500px;
+      background-color: #e48787;
+    }
+    #info {
+      position: fixed;
+      top: 0;
+      left: 50%;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="box" id="box1"></div>
+    <div
+      class="box"
+      id="box2"
+      style="background-color: rgb(191, 218, 171)"
+    ></div>
+    <div
+      class="box"
+      id="box3"
+      style="background-color: rgb(171, 194, 218)"
+    ></div>
+    <div id="info">
+      <a href="#box1">box1</a>
+      <br />
+      <a href="#box2">box2</a>
+      <br />
+      <a href="#box3">box3</a>
+    </div>
+    <script>
+      const keyStates = []; //代表按鍵狀態
+      const ball = document.querySelector(".ball");
+
+      const downHandler = (e) => {
+        //預設行為要改變
+        e.preventDefault();
+        console.log(e.code);
+
+        //表示開始按下按鍵
+        keyStates[e.code] = true;
+
+        //先弄一個目前物件所在位置
+        let cx = parseInt(ball.style.left);
+
+        let cy = parseInt(ball.style.top);
+
+        //判斷按鍵狀態
+        //如果裡面有這個屬性  代表是按住這個按鍵
+        if (keyStates.ArrowRight) {
+          cx += 10;
+        }
+        if (keyStates.ArrowLeft) {
+          cx -= 10;
+        }
+        if (keyStates.ArrowUp) {
+          cy -= 10;
+        }
+        if (keyStates.ArrowDown) {
+          cy += 10;
+        }
+        //處理好後放回去處理過的
+        ball.style.left = cx + "px";
+        ball.style.top = cy + "px";
+      };
+
+      const upHandler = (e) => {
+        //預設行為要改變
+        e.preventDefault();
+        console.log(e.code);
+
+        //表示開始按下按鍵
+        delete keyStates[e.code]; // 表示放開按鍵
+      };
+
+      window.addEventListener("keydown", downHandler);
+      window.addEventListener("keyup", upHandler);
+    </script>
+    <script>
+      const hashHandler = () => {
+        console.log(location);
+        //上面這個可以拿到hash
+        //一進來不會觸發  所以拉出來到hashHandler裏面
+      };
+
+      window.addEventListener("hashchange", hashHandler);
+      hashHandler();
+    </script>
+  </body>
+</html>

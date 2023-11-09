@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      // import {f1} from "./modules/func02.js";
+      import  Person, {f1, n} from "./modules/func02.js";
+      console.log(f1(n));
+      const p1 = new Person('Alex', 27);
+      console.log(p1.toString());
+    </script>
+  </body>
+</html>

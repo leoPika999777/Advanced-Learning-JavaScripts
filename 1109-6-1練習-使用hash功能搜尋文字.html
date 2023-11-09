@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <form
+            class="d-flex"
+            role="search"
+            onsubmit="/* findProducts(); */ return false;"
+          >
+            <input
+              id="search"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              onkeyup="findProducts(event)"
+            />
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>書名</th>
+                <th>價格</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="./data/products.js"></script>
+    <script>
+      const tbody = document.querySelector("tbody");
+      const searchField = document.querySelector("#search");
+
+      const itemTpl = ({ bookname, price }) => {
+        return `
+        <tr>
+          <td>${bookname}</td>
+          <td>${price}</td>
+        </tr>
+        `;
+      };
+
+      const renderTable = (searchStr = "") => {
+        tbody.innerHTML = products
+          .filter((el) => {
+            if (!searchStr) return true;
+            return el.bookname.indexOf(searchStr) >= 0;
+          })
+          .map((el) => {
+            const el2 = { ...el }; // 複製, 不要影響到原本的資料
+            if (searchStr) {
+              el2.bookname = el2.bookname
+                .split(searchStr)
+                .join(`<b>${searchStr}</b>`);
+            }
+
+            return itemTpl(el2);
+          })
+          .join("");
+      };
+      
+      
+      let firstHash = decodeURIComponent(location.hash.slice(1) || "");
+      searchField.value = firstHash;
+      renderTable(firstHash); // 一開始進入頁面時
+
+      function findProducts(e) {
+        if (e.isComposing) return; // 如果是使用輸入法還沒完成輸入時
+        const mySearch = searchField.value.trim();
+        location.hash = `#${mySearch}`;
+        renderTable(mySearch);
+      }
+    </script>
+  </body>
+</html>

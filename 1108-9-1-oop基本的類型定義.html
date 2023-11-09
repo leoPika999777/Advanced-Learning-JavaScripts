@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //基本的類型定義
+      /**
+* !    物件: 個體, 實體 instance 
+* ?    類別: 類型, class (type)
+* !    多型
+* ?    繼承
+
+    */
+
+      function Person(name, age) {
+        this.name = name;
+        // 前面屬性 後面物件
+        //物件傳給屬性
+        this.age = age;
+        this.getInfo = function () {
+          return this.name + " " + this.age;
+        };
+      }
+
+      var p1 = new Person("peter", 25);
+
+      console.log(p1.name);
+      //呼叫p1的name
+      console.log(p1.getInfo());
+      //拿到p1的字串
+    </script>
+  </body>
+</html>

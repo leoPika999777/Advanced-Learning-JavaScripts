@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <form
+            class="d-flex"
+            role="search"
+            onsubmit="/* findProducts(); */ return false;"
+          >
+            <input
+              id="search"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              oninput="findProducts()"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>書名</th>
+                <th>價格</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="./data/products.js"></script>
+    <script>
+      const tbody = document.querySelector("tbody");
+
+      const itemTpl = ({ bookname, price }) => {
+        return `
+        <tr>
+          <td>${bookname}</td>
+          <td>${price}</td>
+        </tr>
+        `;
+      };
+
+      //寫另一個function 包起來
+      //（）內原本是空的  我加上 searchStr=''  會在renderTable return回來呼叫一個空字串
+      const renderTable = (searchStr = "") => {
+        tbody.innerHTML = products
+          .filter((el) => {
+
+          //如果沒有searchStr 那就return true  如果有 就是>=0  就是有
+          if (!searchStr) return true;
+            return el.bookname.indexOf(searchStr) >= 0;
+          })
+          .map((el) => {
+            //把原本的el展開作複製
+            const el2 = { ...el }; //複製
+
+          //如果沒複製 會變成搜尋後被變更  粗體不會消失 避免影響到原本資料
+            if (searchStr){
+              el2.bookname = el2.bookname.split(searchStr).join(`<b>${searchStr}</b>`)
+            }
+            return itemTpl(el2);
+          })
+          .join("");
+      };
+      renderTable();
+
+
+      const searchField = document.querySelector("#search");
+        function findProducts(){
+          //console.log(searchField.value);
+
+          const v=searchField.value;
+          renderTable(searchField.value.trim());
+      }
+    </script>
+  </body>
+</html>

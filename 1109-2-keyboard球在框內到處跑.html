@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .rect {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        background-color: #e7f5f7;
+        border: 1px solid #cccccc;
+      }
+      .ball {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(224, 150, 140);
+        border: 1px solid black;
+        /* transition: 1s; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rect">
+      <div class="ball" style="left: 0px ; top:0px;"></div>
+    </div>
+
+    <script>
+      const ball = document.querySelector(".ball");
+
+      const handler = (e) => {
+        //預設行為要改變
+        e.preventDefault();
+        console.log(e.code);
+        
+        //event 的code
+        switch (e.code) {
+
+          
+          case "ArrowRight":
+            ball.style.left = parseInt(ball.style.left) + 10 + "px";
+            break;
+
+          case "ArrowLeft":
+            ball.style.left = parseInt(ball.style.left) - 10 + "px";
+            break;
+          case "ArrowUp":
+            ball.style.top = parseInt(ball.style.top) - 10 + "px";
+            break;
+          case "ArrowDown":
+            ball.style.top = parseInt(ball.style.top) + 10 + "px";
+            break;
+        }
+      };
+
+      window.addEventListener("keydown", handler);
+    </script>
+  </body>
+</html>

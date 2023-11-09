@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .container {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        background-color: #f0f8ff;
+        overflow: hidden;
+      }
+      .player {
+        position: absolute;
+        background-image: url("img/player1.png");
+        background-position: 0px 0px;
+        width: 85px;
+        height: 128px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="player"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      var player = $(".player");
+      var orianta = 0;
+      var step = 0;
+
+      var myHandler = function (event) {
+        if (step != 0) {
+          return;
+        }
+        switch (event.keyCode) {
+          case 38: //上
+            orianta = 1;
+            step = 4;
+            break;
+          case 39: //右
+            orianta = 2;
+            step = 4;
+
+            break;
+          case 40: //下
+            orianta = 3;
+            step = 4;
+
+            break;
+          case 37: //左
+            orianta = 4;
+            step = 4;
+
+            break;
+        }
+        console.log(orianta, step, "---");
+      };
+
+      $("body").keydown(myHandler);
+
+      var doMove = function () {
+        setTimeout(doMove, 50);
+
+        // 走完一個方向
+        if (orianta != 0 && step == 0) {
+          orianta = 0;
+          return;
+        }
+
+        if (orianta == 0) {
+          return;
+        }
+        console.log(orianta, step);
+        switch (orianta) {
+          case 1: //上
+            player.css(
+              "background-position",
+              -85 * ((5 - step) % 4) + "px -384px"
+            );
+            player.css("top", "-=5");
+            break;
+          case 2: //右
+            player.css(
+              "background-position",
+              -85 * ((5 - step) % 4) + "px -256px"
+            );
+            player.css("left", "+=5");
+            break;
+          case 3: //下
+            player.css(
+              "background-position",
+              -85 * ((5 - step) % 4) + "px 0px"
+            );
+            player.css("top", "+=5");
+            break;
+          case 4: //左
+            player.css(
+              "background-position",
+              -85 * ((5 - step) % 4) + "px -128px"
+            );
+            player.css("left", "-=5");
+            break;
+        }
+        step--;
+      };
+
+      doMove();
+    </script>
+  </body>
+</html>

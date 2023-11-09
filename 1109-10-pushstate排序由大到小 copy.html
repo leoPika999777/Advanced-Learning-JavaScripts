@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <form
+            class="d-flex"
+            role="search"
+            onsubmit="/* findProducts(); */ return false;"
+          >
+            <input
+              id="search"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              onkeyup="changeParams()"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <select
+            id="orderby"
+            class="form-select"
+            aria-label="Default select example"
+            onchange="changeParams();"
+          >
+            <option value="sid_asc">編號由小到大</option>
+            <option value="sid_desc">編號由大到小</option>
+            <option value="price_asc">價格由小到大</option>
+            <option value="price_desc">價格由大到小</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <pre id="pre"></pre>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      const searchInp = document.querySelector("#search");
+      const orderbySel = document.querySelector("#orderby");
+
+      function changeParams() {
+        const search = searchInp.value;
+        const orderby = orderbySel.value;
+
+        const usp = new URLSearchParams({ search, orderby });
+
+        
+
+      //只要變動 就用history 做pushState
+      //變成字串 要加？  不然他不會自己給你加
+      history.pushState(null, '' ,'?'+usp.toString() )
+      }
+      
+    </script>
+  </body>
+</html>

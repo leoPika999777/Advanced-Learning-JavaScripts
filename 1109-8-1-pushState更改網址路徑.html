@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <button onclick="myPush()">pushState</button>
+
+    <script>
+      let n = 1;
+
+      //pushState() 取用三個參數：一個 state 物件、title（目前忽略）與 URL（可選用）。
+      //pushState可以變更路徑
+      //pushState(state, unused)
+      //pushState(state, unused, url)
+
+      function myPush() {
+        n++;
+        //第一個給n
+        //第二個要給空字串 不然第三個會往前
+        //第三個要給  跳到a=1
+        //如果第三個 斜線/ 開始 會直接換到最前面  ex:/abc  https://developer.mozilla.org/zh-TW/ =>https://developer.mozilla.org/abc
+
+        history.pushState({ n }, "", `?n=${n}`);
+      }
+    </script>
+  </body>
+</html>

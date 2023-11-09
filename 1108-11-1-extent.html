@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ES6 classes
+
+      class Person {
+        gender;
+        constructor(name = "noname", age = 17) {
+          this.name = name;
+          this.age = age;
+        }
+        getInfo() {
+          return `${this.name}: ${this.age}`;
+        }
+        toString() {
+          return JSON.stringify(this);
+          // 這邊的this會把所有屬性列出來
+        }
+      }
+      
+      class Employee extends Person{
+        constructor(name , age, male, EmployeeID){
+          super(name , age) //呼叫父類別的建構函式
+          this.male=male
+          this.EmployeeID= EmployeeID
+        }
+
+
+      }
+
+      const e1 = new Employee('LEO',32,'boy','v006');
+      console.log(e1.toString());
+
+      console.log( el instanceof Employee);
+      console.log(el );
+
+    </script>
+  </body>
+</html>

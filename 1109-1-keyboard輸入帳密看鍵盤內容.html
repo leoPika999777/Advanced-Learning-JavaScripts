@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input1" />
+    <br />
+    <input type="text" id="input2" />
+
+    <script>
+      const [input1, input2] = document.querySelectorAll("input");
+      const handler = (e) => {
+        const {key, keyCode, which, code, isComposing} = e;
+        console.log(e.type, {key, keyCode, which, code, isComposing});
+      };
+
+      input1.addEventListener("keydown", handler);
+      input1.addEventListener("keypress", handler); // 有按出文字內容才會觸發
+      input1.addEventListener("keyup", handler);
+    </script>
+  </body>
+</html>
