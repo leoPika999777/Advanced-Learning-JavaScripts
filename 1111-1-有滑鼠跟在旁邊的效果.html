@@ -32,9 +32,13 @@
       const rect = document.querySelector(".rect");
 
       //顏色效果 //先產生不同顏色的s
-      function getRandomRGB() {
+      function getRandomRGB(){
+        //Math.floor(16777216 * Math.random()) 會得到一個介於 0 和 16777215 之間的整數。
         let s = Math.floor(16777216 * Math.random()).toString(16);
+        
+        //s.padStart(6, "0") 將這個字符串補齊成六位，不足六位的話在前面添加零。
         s = s.padStart(6, "0");
+        //最後，函數返回以 "#" 開頭的六位十六進位 RGB 顏色碼。
         return "#" + s;
       }
 
@@ -46,13 +50,15 @@
         rect.addEventListener("mousemove", mMove);
       };
 
+      
       //監聽mMove 滑鼠移開 //mMove的效果
       //在這個函式中，它似乎是將之前附加的 mMove 事件處理器從 rect 元素中移除。
       //這表示當滑鼠放開時，就不再會觸發 mMove 函式，即滑鼠移動事件不再被監聽。
-      
       const mUp = (e) => {
         rect.removeEventListener("mousemove", mMove);
       };
+
+
 
       //滑鼠移動 產生的效果
       const mMove = (e) => {
@@ -65,6 +71,11 @@
         b.style.width = size + "px";
         b.style.height = size + "px";
         rect.append(b);
+
+        setTimeout(()=>{
+          b.style.top='300px';
+          b.style.opacity=0
+        },1)
       };
 //透過事件監聽器綁定了 mousedown 事件到 mDown 函數，以及 mouseup 事件到 mUp 函數。
       rect.addEventListener("mousedown", mDown);

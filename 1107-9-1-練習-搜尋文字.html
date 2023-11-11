@@ -52,7 +52,12 @@
     <script>
       const tbody = document.querySelector("tbody");
 
+
+//const itemTpl = ({ bookname, price }) => { ... };
+//這是一個箭頭函式，用來定義生成表格行的模板。
       const itemTpl = ({ bookname, price }) => {
+        //它接受一個包含 bookname 和 price 屬性的物件作為參數，
+        //然後返回一個包含這兩個屬性值的 HTML 字符串。
         return `
         <tr>
           <td>${bookname}</td>
@@ -64,8 +69,10 @@
       //寫另一個function 包起來
       //（）內原本是空的  我加上 searchStr=''  會在renderTable return回來呼叫一個空字串
       const renderTable = (searchStr = "") => {
-        tbody.innerHTML = products
-          .filter((el) => {
+
+
+        // tbody.innerHTML = products.filter((el) => { ... }).map((el, i) => { ... }).join("");：
+        tbody.innerHTML = products.filter((el) => {
 
           //如果沒有searchStr 那就return true  如果有 就是>=0  就是有
           if (!searchStr) return true;
