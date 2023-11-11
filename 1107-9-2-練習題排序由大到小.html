@@ -62,8 +62,12 @@
       //這邊是排序的function
 
       const orderByFus = {
+        //這個函式用於按 sid 屬性升序排序，即從小到大。
         sid_asc: (a, b) => a.sid - b.sid,
+
+        //這個函式用於按 sid 屬性降序排序，即從大到小。
         sid_desc: (a, b) => b.sid - a.sid,
+        
         price_asc: (a, b) => a.price - b.price,
         price_desc: (a, b) => b.price - a.price,
       };
